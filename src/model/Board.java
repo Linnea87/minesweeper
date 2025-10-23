@@ -12,6 +12,7 @@ public class Board {
     }
 
     public void revealCell(Cell cell) {
+        System.out.println("Hello!");
     }
 
     public void isGameOver() {
