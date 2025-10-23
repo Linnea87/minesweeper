@@ -1,5 +1,5 @@
 package model;
-
+import model.Cell;
 public class Board {
 
     // === Fields ==============================================================
