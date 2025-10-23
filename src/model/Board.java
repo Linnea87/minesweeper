@@ -32,6 +32,16 @@ public class Board {
     }
 
     public void createBoard() {
+        Random random = new Random();
+        int placedMines = 0;
+        while (placedMines < mineCount) {
+            int r = random.nextInt(rows);
+            int c = random.nextInt(cols);
+            if (!grid[r][c].hasMine()) {
+                grid[r][c].setMine(true);
+                placedMines++;
+            }
+        }
     }
 
     public void calculateAdjacentMines () {
