@@ -1,5 +1,7 @@
 package model;
 
+import core.Coordinate;
+
 public class Board {
     public void initialize() {
     }
@@ -18,8 +20,29 @@ public class Board {
     public void isGameOver() {
     }
 
-    public void toggleFlag() {
-        System.out.println("Hej");
+    public void toggleFlag(Coordinate coordinate){
+        int row = coordinate.getRow();
+        int col = coordinate.getCol();
+
+        if (row < 0 || row >= rows || col < 0 || col >= cols) {
+            System.out.println("Invalid coordinate");
+            return;
+        }
+
+        Cell cell = getCell(coordinate);
+
+        if (cell.isRevealed()){
+            System.out.println("You can't reveal this cell");
+            return;
+        }
+
+        if (cell.isFlagged()){
+            System.out.println("Flag placed on (" + row + "," + col + ")");
+        } else {
+            System.out.println("Flag deleted from (" + row + "," + col + ")");
+        }
+
+
 
     }
 
