@@ -31,19 +31,17 @@ public class Cell {
 
     // Setters
     public void revealCell(boolean revealed) {
-        isRevealed = true;
+        this.isRevealed = revealed;
     }
-    public void isFlagged(boolean flagged) {
-        isFlagged = true;
+    public void setFlagged(boolean flagged) {
+        this.isFlagged = flagged;
     }
-    public void toggleFlag() {
-        isFlagged = !this.isFlagged;
-    }
-    public void placeMine() {
+
+    public void placeMine(){
         this.isMine = true;
     }
 
     public void setAdjacentMines(int adjacentMines) {
-        this.adjacentMines = count;
+        this.adjacentMines = adjacentMines;
     }
 }
