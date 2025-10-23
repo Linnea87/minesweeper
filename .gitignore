@@ -4,7 +4,7 @@ out/
 !**/src/test/**/out/
 .kotlin
 .idea/
-git-minesweeper.iml
+minesweeper.iml
 
 ### Eclipse ###
 .apt_generated
