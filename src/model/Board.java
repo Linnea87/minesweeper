@@ -18,7 +18,8 @@ public class Board {
     public void isGameOver() {
     }
 
-    public void toggleFlag {
+    public void toggleFlag() {
+        System.out.println("Hej");
 
     }
 
