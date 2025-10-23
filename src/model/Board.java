@@ -32,7 +32,7 @@ public class Board {
         Cell cell = getCell(coordinate);
 
         if (cell.isRevealed()){
-            System.out.println("You can't reveal this cell");
+            System.out.println("You can't flag this cell");
             return;
         }
 
