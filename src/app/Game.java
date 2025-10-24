@@ -53,10 +53,7 @@ public class Game {
                 running = false;
             }
             
+            ui.showExitMessage();
         }
-
-
-
     }
-
 }
