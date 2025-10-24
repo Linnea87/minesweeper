@@ -1,7 +1,10 @@
 package model;
 
+import core.Command;
 import core.Coordinate;
 import java.util.Random;
+import core.Command;
+import ui.ConsoleUI;
 
 public class Board {
 
@@ -13,6 +16,7 @@ public class Board {
     private Cell[][] grid;
     private boolean lost;
 
+
     // === Constructor =========================================================
   
     public Board(int rows, int cols, int mineCount) {
@@ -21,6 +25,14 @@ public class Board {
         this.mineCount = mineCount;
         this.grid = null;
         this.lost = false;
+    }
+
+    public int getRows() {
+        return rows;
+    }
+
+    public int getCols() {
+        return cols;
     }
   
     // === Core logic ==========================================================
@@ -133,7 +145,14 @@ public class Board {
     }
 
 
-    public void isGameOver() {
+    public boolean isGameOver() {
+        if (lost) {
+            return true;
+        }
+        if (isGameWon()) {
+            return true;
+        }
+        return false;
     }
 
     public void toggleFlag(Coordinate coordinate){
@@ -161,9 +180,9 @@ public class Board {
         }
     }
 
-
-
     public boolean isGameWon() {
+
+        return false;
     }
 
     // === Getter som UI behöver ==============================================
