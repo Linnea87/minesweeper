@@ -133,7 +133,14 @@ public class Board {
     }
 
 
-    public void isGameOver() {
+    public boolean isGameOver() {
+        if (lost) {
+            return true;
+        }
+        if (isGameWon()) {
+            return true;
+        }
+        return false;
     }
 
     public void toggleFlag(Coordinate coordinate){
