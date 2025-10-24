@@ -164,8 +164,8 @@ public class Board {
     public boolean isGameWon(Cell[][] cell) {
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Cell wonCell = cell[row][col];
-                if (wonCell.hasMine() && !wonCell.isRevealed()) {
+                Cell currentCell = cell[row][col];
+                if (!currentCell.hasMine() && !currentCell.isRevealed()) {
                     return false;
                 }
             }
