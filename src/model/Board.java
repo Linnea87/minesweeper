@@ -163,7 +163,7 @@ public class Board {
 
 
 
-    public void isGameWon() {
+    public boolean isGameWon() {
     }
 
     // === Getter som UI behöver ==============================================
