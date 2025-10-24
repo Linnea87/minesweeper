@@ -1,18 +1,15 @@
 package core;
 
+import model.Board;
+
 public class Command {
     private CommandType type;
     private Coordinate coordinate;
 
+
     public Command(CommandType type, Coordinate coordinate) {
         this.type = type;
         this.coordinate = coordinate;
-    }
-
-    enum CommandType {
-         REVEAL,
-         FLAG,
-         QUIT
     }
 
     public CommandType getType() {

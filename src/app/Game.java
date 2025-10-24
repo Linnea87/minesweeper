@@ -22,6 +22,8 @@ public class Game {
         board.initialize();
         board.createBoard();
         ui.render(board);
+
+
     }
 
 }
