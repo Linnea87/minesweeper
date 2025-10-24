@@ -1,5 +1,8 @@
 package ui;
 
+import core.Command;
+import core.CommandType;
+import core.Coordinate;
 import model.Board;
 import model.Cell;
 
@@ -31,8 +34,21 @@ public class ConsoleUI {
             System.out.print(rowLabel + " ");
 
             for (int c = 0; c < cols; c++) {
-                char cellChar = grid[r][c].hasMine() ? '*' : ' ';
-                System.out.print("| " + cellChar + " ");
+                Cell cell  = grid[r][c];
+               char cellChar;
+
+               if (cell.isFlagged()) {
+                   cellChar = 'F';
+               } else if(!cell.isRevealed()) {
+                   cellChar = '·';
+               } else if (cell.hasMine()) {
+                   cellChar = '*';
+               } else if (cell.getAdjacentMines() > 0) {
+                   cellChar = Character.forDigit(cell.getAdjacentMines(), 10);
+               } else {
+                   cellChar = ' ';
+               }
+                System.out.println("| " + cellChar + " ");
             }
             System.out.println("|");
             printRowSeparator(cols, r, rows);
@@ -71,6 +87,8 @@ public class ConsoleUI {
         System.out.println();
     }
 
+    // === Input handling ======================================================
+
     /**
      * Reads player input from the console.
      * Example commands:
@@ -78,10 +96,38 @@ public class ConsoleUI {
      * - f b3 → flag cell B3
      * - q → quit game
      */
-    public String readUserInput() {
-        System.out.print("\nEnter your command (r/f/q): ");
-        return scanner.nextLine().trim().toLowerCase();
+    public Command readUserCommand() {
+        System.out.print("\nEnter your command (r/f/q + cell): ");
+        String line = scanner.nextLine().trim().toLowerCase();
+
+        if (line.equals("q")) {
+            return new Command(Command.CommandType.QUIT, null);
+        }
+        String[] parts = line.split("\\s+");
+        if (parts.length != 2) {
+            return new Command(Command.CommandType.INVALID);
+        }
+
+        String action = parts[0];
+        String coordText = parts[1];
+        Command coord = new Coordinate(coordText);
+
+        CommandType type;
+        switch (action) {
+            case "r":
+                type = CommandType.REVEAL;
+                break;
+            case "f":
+                type = CommandType.FLAG;
+                break;
+            default:
+                type = CommandType.INVALID;
+        }
+        return new Command(type, coord);
     }
+
+    // === Messages ============================================================
+
 
     /** Displays message when the player loses the game. */
     public void showGameOver() {
@@ -101,6 +147,11 @@ public class ConsoleUI {
     /** Optional: shows welcome/instructions message at game start. */
     public void showWelcomeMessage() {
         System.out.println("🎮 Welcome to Minesweeper!");
+        System.out.println("Commands:");
+        System.out.println("- r a3 → reveal cell A3");
+        System.out.println("- f b2 → flag/unflag cell B2");
+        System.out.println("- q    → quit game");
         System.out.println();
+    }
     }
 }
