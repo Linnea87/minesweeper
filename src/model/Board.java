@@ -108,7 +108,7 @@ public class Board {
             return;
         }
 
-        cell.reveal();
+        cell.revealCell();
 
         if (cell.hasMine()) {
             lost = true;
@@ -161,6 +161,8 @@ public class Board {
         }
     }
 
+
+
     public void isGameWon() {
     }
 
@@ -170,6 +172,9 @@ public class Board {
         return grid;
     }
 
+    public Cell getCell(Coordinate coordinate) {
+        return grid[coordinate.getRow()][coordinate.getCol()];
+    }
 
 
 }

@@ -1,5 +1,7 @@
 package model;
 
+import core.Coordinate;
+
 public class Cell {
   
   // === Fields ==============================================================
@@ -37,8 +39,8 @@ public class Cell {
         return adjacentMines;
     }
 
-    public void revealCell(boolean revealed) {
-        this.isRevealed = revealed;
+    public void revealCell() {
+        this.isRevealed = isRevealed;
     }
     public void setFlagged(boolean flagged) {
         this.isFlagged = flagged;
@@ -47,4 +49,5 @@ public class Cell {
     public void setAdjacentMines(int adjacentMines) {
         this.adjacentMines = adjacentMines;
     }
+
 }
