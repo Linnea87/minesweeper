@@ -20,6 +20,7 @@ public class Game {
     // === Core logic ==========================================================
     public void start() {
         board.initialize();
+        board.createBoard();
         ui.render(board);
     }
 
