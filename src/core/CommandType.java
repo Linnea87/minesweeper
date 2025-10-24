@@ -3,5 +3,6 @@ package core;
 enum CommandType {
     REVEAL,
     FLAG,
-    QUIT
+    QUIT,
+    INVALID
 }
