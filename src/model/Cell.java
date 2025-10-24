@@ -40,7 +40,7 @@ public class Cell {
     }
 
     public void revealCell() {
-        this.isRevealed = isRevealed;
+        this.isRevealed = true;
     }
     public void setFlagged(boolean flagged) {
         this.isFlagged = flagged;
