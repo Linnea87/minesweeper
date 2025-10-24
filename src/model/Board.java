@@ -13,7 +13,6 @@ public class Board {
 
     }
 
-    //
     public void revealCell(Coordinate coord) {
         // Coordinate class should provide:
         // - int getRow()
