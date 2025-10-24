@@ -1,6 +1,6 @@
 package core;
 
-enum CommandType {
+public enum CommandType {
     REVEAL,
     FLAG,
     QUIT,
