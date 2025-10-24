@@ -9,11 +9,30 @@ public class Coordinate {
         this.col = col;
     }
 
+    public Coordinate(String input) {
+        input = input.trim().toLowerCase();
+
+        if (input.length() < 2) {
+            throw new IllegalArgumentException("Invalid coordinate format: " + input);
+        }
+
+        char rowChar = input.charAt(0);
+        String colPart = input.substring(1);
+
+        this.row = rowChar - 'a';
+        this.col = Integer.parseInt(colPart) - 1;
+    }
+
     public int getRow() {
         return row;
     }
 
     public int getCol() {
         return col;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + row + "," + col + ")";
     }
 }
