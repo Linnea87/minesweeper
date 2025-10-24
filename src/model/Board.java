@@ -84,7 +84,6 @@ public class Board {
     public boolean isValidCell(int row, int col) {
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
-
     
     public void revealCell(Coordinate coord) {
         // Coordinate class should provide:
