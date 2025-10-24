@@ -37,13 +37,12 @@ public class Board {
         }
 
         if (cell.isFlagged()){
-            System.out.println("Flag placed on (" + row + "," + col + ")");
-        } else {
+            cell.setFlagged(false);
             System.out.println("Flag deleted from (" + row + "," + col + ")");
+        } else {
+            cell.setFlagged(true);
+            System.out.println("Flag placed on (" + row + "," + col + ")");
         }
-
-
-
     }
 
     public void isGameWon() {
