@@ -1,24 +1,32 @@
 package model;
 
 public class Cell {
-    private boolean isMine;
+  
+  // === Fields ==============================================================
+
+    private boolean hasMine;
     private boolean isRevealed;
     private boolean isFlagged;
     private int adjacentMines;
+  
+    // === Constructor =========================================================
 
-
-    //Constructor
     public Cell() {
-        this.isMine = false;
+        this.hasMine = false;
         this.isRevealed = false;
         this.isFlagged = false;
         this.adjacentMines = 0;
     }
 
-    // Getters
-    public boolean isMine() {
-        return isMine;
+    // === Core methods ========================================================
+
+    public boolean hasMine() {
+        return hasMine;
     }
+    public void setMine(boolean hasMine) {
+        this.hasMine = hasMine;
+    }
+
     public boolean isRevealed() {
         return isRevealed;
     }
@@ -29,16 +37,11 @@ public class Cell {
         return adjacentMines;
     }
 
-    // Setters
     public void revealCell(boolean revealed) {
         this.isRevealed = revealed;
     }
     public void setFlagged(boolean flagged) {
         this.isFlagged = flagged;
-    }
-
-    public void placeMine(){
-        this.isMine = true;
     }
 
     public void setAdjacentMines(int adjacentMines) {
