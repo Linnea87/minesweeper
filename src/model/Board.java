@@ -180,10 +180,11 @@ public class Board {
         }
     }
 
-    public boolean isGameWon(Cell[][] cell) {
+    public boolean isGameWon() {
+        Cell[][] cells = getGrid();
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < cols; col++) {
-                Cell currentCell = cell[row][col];
+                Cell currentCell = cells[row][col];
                 if (!currentCell.hasMine() && !currentCell.isRevealed()) {
                     return false;
                 }
