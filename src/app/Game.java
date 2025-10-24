@@ -21,7 +21,40 @@ public class Game {
     public void start() {
         board.initialize();
         board.createBoard();
-        ui.render(board);
+        board.calculateAdjacentMines();
+
+
+        boolean running = true;
+        while (running) {
+            ui.render(board);
+
+            core.Command cmd = ui.readUserCommand();
+
+            switch(cmd.getType()){
+                case QUIT:
+                    running = false;
+                    break;
+                case REVEAL:
+                    board.revealCell(cmd.getCoordinate());
+                    break;
+
+                case FLAG:
+                    board.toggleFlag(cmd.getCoordinate());
+                    break;
+
+                case INVALID:
+                default:
+                    ui.showInvalidInputMessage();
+                    break;
+            }
+
+            if (board.isGameOver()){
+                ui.showGameOver();
+                running = false;
+            }
+
+        }
+
 
 
     }
