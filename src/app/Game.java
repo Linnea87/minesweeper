@@ -52,7 +52,7 @@ public class Game {
                 ui.showGameOver();
                 running = false;
             }
-
+            
         }
 
 

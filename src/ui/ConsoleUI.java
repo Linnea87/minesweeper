@@ -101,16 +101,16 @@ public class ConsoleUI {
         String line = scanner.nextLine().trim().toLowerCase();
 
         if (line.equals("q")) {
-            return new Command(Command.CommandType.QUIT, null);
+            return new Command(CommandType.QUIT, null);
         }
         String[] parts = line.split("\\s+");
         if (parts.length != 2) {
-            return new Command(Command.CommandType.INVALID);
+            return new Command(CommandType.INVALID, null);
         }
 
         String action = parts[0];
         String coordText = parts[1];
-        Command coord = new Coordinate(coordText);
+        Coordinate coord = new Coordinate(coordText);
 
         CommandType type;
         switch (action) {
@@ -153,5 +153,8 @@ public class ConsoleUI {
         System.out.println("- q    → quit game");
         System.out.println();
     }
+
+    public void showExitMessage() {
+        System.out.println("\n👋 Thanks for playing!");
     }
 }
