@@ -1,5 +1,6 @@
 package app;
 
+import core.Command;
 import model.Board;
 import ui.ConsoleUI;
 
@@ -22,16 +23,18 @@ public class Game {
         board.initialize();
         board.createBoard();
         board.calculateAdjacentMines();
+        ui.showWelcomeMessage();
 
 
         boolean running = true;
         while (running) {
             ui.render(board);
 
-            core.Command cmd = ui.readUserCommand();
+          Command cmd = ui.readUserCommand();
 
             switch(cmd.getType()){
                 case QUIT:
+                    ui.showExitMessage();
                     running = false;
                     break;
                 case REVEAL:
@@ -48,12 +51,11 @@ public class Game {
                     break;
             }
 
-            if (board.isGameOver()){
+            if (running && board.isGameOver()){
+                ui.render(board);
                 ui.showGameOver();
                 running = false;
             }
-            
-            ui.showExitMessage();
         }
     }
 }
