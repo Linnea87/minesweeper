@@ -31,29 +31,32 @@ public class ConsoleUI {
 
         for (int r = 0; r < rows; r++) {
             char rowLabel = (char) (r + 'a');
+
             System.out.print(rowLabel + " ");
 
             for (int c = 0; c < cols; c++) {
-                Cell cell  = grid[r][c];
-               char cellChar;
+                Cell cell = grid[r][c];
+                char cellChar;
 
-               if (cell.isFlagged()) {
-                   cellChar = 'F';
-               } else if(!cell.isRevealed()) {
-                   cellChar = '·';
-               } else if (cell.hasMine()) {
-                   cellChar = '*';
-               } else if (cell.getAdjacentMines() > 0) {
-                   cellChar = Character.forDigit(cell.getAdjacentMines(), 10);
-               } else {
-                   cellChar = ' ';
-               }
-                System.out.println("| " + cellChar + " ");
+                if (cell.isFlagged()) {
+                    cellChar = 'F';
+                } else if (!cell.isRevealed()) {
+                    cellChar = '·';
+                } else if (cell.hasMine()) {
+                    cellChar = '*';
+                } else if (cell.getAdjacentMines() > 0) {
+                    cellChar = Character.forDigit(cell.getAdjacentMines(), 10);
+                } else {
+                    cellChar = ' ';
+                }
+
+                // Viktigt: print, inte println
+                System.out.print("| " + cellChar + " ");
             }
-            System.out.println("|");
+
+            System.out.println("|"); // avsluta raden
             printRowSeparator(cols, r, rows);
         }
-
         printBottomBorder(cols);
     }
 
@@ -97,7 +100,7 @@ public class ConsoleUI {
      * - q → quit game
      */
     public Command readUserCommand() {
-        System.out.print("\nEnter your command (r/f/q + cell): ");
+        System.out.print("\nEnter command (e.g. r a1, f b3, or q to quit): ");
         String line = scanner.nextLine().trim().toLowerCase();
 
         if (line.equals("q")) {
@@ -147,10 +150,15 @@ public class ConsoleUI {
     /** Optional: shows welcome/instructions message at game start. */
     public void showWelcomeMessage() {
         System.out.println("🎮 Welcome to Minesweeper!");
+        System.out.println();
+        System.out.println("How to play:");
+        System.out.println("- The board has rows a–h and columns 1–8.");
+        System.out.println("- Pick a cell by combining row + column, e.g. a1 or c5.");
+        System.out.println();
         System.out.println("Commands:");
-        System.out.println("- r a3 → reveal cell A3");
-        System.out.println("- f b2 → flag/unflag cell B2");
-        System.out.println("- q    → quit game");
+        System.out.println("- r a1 → reveal cell a1");
+        System.out.println("- f b3 → flag/unflag cell b3");
+        System.out.println("- q    → quit the game");
         System.out.println();
     }
 
