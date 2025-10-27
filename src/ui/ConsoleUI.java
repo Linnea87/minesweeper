@@ -156,7 +156,7 @@ public class ConsoleUI {
 
     /** Optional: shows welcome/instructions message at game start. */
     public void showWelcomeMessage() {
-        System.out.println("🎮 Welcome to Minesweeper!");
+        System.out.println("\uD83D\uDCA3 Welcome to Minesweeper!");
         System.out.println();
         System.out.println("How to play:");
         System.out.println("- The board has rows a–h and columns 1–8.");
