@@ -53,7 +53,11 @@ public class Game {
 
             if (running && board.isGameOver()){
                 ui.render(board);
-                ui.showGameOver();
+                if (board.isGameWon()){
+                    ui.showWinMessage();
+                } else {
+                    ui.showGameOver();
+                }
                 running = false;
             }
         }
