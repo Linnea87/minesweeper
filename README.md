@@ -1,6 +1,6 @@
 # 💣 Minesweeper (Text-Based Java Game)
 
-![Mockup Screenshot](link-to-your-mockup.png)
+![Mockup Screenshot](docs/minesweeper-mockup.png)
 
 This project is a text-based Minesweeper game developed in Java as a group assignment.  
 The player interacts through the terminal, revealing cells and trying to avoid hidden mines.  
