@@ -1,10 +1,7 @@
 package model;
 
-import core.Command;
 import core.Coordinate;
 import java.util.Random;
-import core.Command;
-import ui.ConsoleUI;
 
 public class Board {
 
