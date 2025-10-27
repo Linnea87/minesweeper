@@ -113,8 +113,15 @@ public class ConsoleUI {
 
         String action = parts[0];
         String coordText = parts[1];
-        Coordinate coord = new Coordinate(coordText);
 
+        Coordinate coord;
+        try {
+            coord = new Coordinate(coordText);
+        }
+        catch (IllegalArgumentException e) {
+            return new Command(CommandType.INVALID, null);
+        }
+        
         CommandType type;
         switch (action) {
             case "r":
