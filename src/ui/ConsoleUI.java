@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class ConsoleUI {
 
     // === Fields ==============================================================
+
     private final Scanner scanner = new Scanner(System.in);
 
     // === Core methods ========================================================
@@ -50,11 +51,10 @@ public class ConsoleUI {
                     cellChar = ' ';
                 }
 
-                // Viktigt: print, inte println
                 System.out.print("| " + cellChar + " ");
             }
 
-            System.out.println("|"); // avsluta raden
+            System.out.println("|");
             printRowSeparator(cols, r, rows);
         }
         printBottomBorder(cols);
@@ -72,21 +72,21 @@ public class ConsoleUI {
 
     private void printTopBorder(int cols) {
         System.out.print("  +");
-        for (int c = 0; c < cols; c++) System.out.print("---+"); // ändrat <= till <
+        for (int c = 0; c < cols; c++) System.out.print("---+");
         System.out.println();
     }
 
     private void printRowSeparator(int cols, int r, int rows) {
         if (r < rows - 1) {
             System.out.print("  +");
-            for (int c = 0; c < cols; c++) System.out.print("---+"); // ändrat <= till <
+            for (int c = 0; c < cols; c++) System.out.print("---+");
             System.out.println();
         }
     }
 
     private void printBottomBorder(int cols) {
         System.out.print("  +");
-        for (int c = 0; c < cols; c++) System.out.print("---+"); // ändrat <= till <
+        for (int c = 0; c < cols; c++) System.out.print("---+");
         System.out.println();
     }
 
@@ -136,25 +136,8 @@ public class ConsoleUI {
         return new Command(type, coord);
     }
 
-    // === Messages ============================================================
+    // === User Guidance & Intro ==================================================
 
-
-    /** Displays message when the player loses the game. */
-    public void showGameOver() {
-        System.out.println("\n💥 Boom! You hit a mine! Game Over!");
-    }
-
-    /** Displays message when the player wins the game. */
-    public void showWinMessage() {
-        System.out.println("\n🎉 Congratulations! You cleared the board!");
-    }
-
-    /** Displays message for invalid or unrecognized input. */
-    public void showInvalidInputMessage() {
-        System.out.println("⚠️ Invalid command! Try again (r/f/q).");
-    }
-
-    /** Optional: shows welcome/instructions message at game start. */
     public void showWelcomeMessage() {
         System.out.println("\uD83D\uDCA3 Welcome to Minesweeper!");
         System.out.println();
@@ -167,11 +150,6 @@ public class ConsoleUI {
         System.out.println("- f b3 → flag/unflag cell b3");
         System.out.println("- q    → quit the game");
         System.out.println();
-
-    }
-
-    public void showExitMessage() {
-        System.out.println("\n👋 Thanks for playing!");
     }
 
     public boolean askPlayAgain() {
@@ -180,4 +158,22 @@ public class ConsoleUI {
         return answer.equals("y");
     }
 
+    // === Game State Messages ====================================================
+
+    public void showGameOver() {
+        System.out.println("\n💥 Boom! You hit a mine! Game Over!");
+    }
+    public void showWinMessage() {
+        System.out.println("\n🎉 Congratulations! You cleared the board!");
+    }
+
+    public void showExitMessage() {
+        System.out.println("\n👋 Thanks for playing!");
+    }
+
+    // === Error & Validation Messages ===========================================
+
+    public void showInvalidInputMessage() {
+        System.out.println("⚠️ Invalid command! Try again (r/f/q).");
+    }
 }
