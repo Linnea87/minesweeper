@@ -167,6 +167,7 @@ public class ConsoleUI {
         System.out.println("- f b3 → flag/unflag cell b3");
         System.out.println("- q    → quit the game");
         System.out.println();
+
     }
 
     public void showExitMessage() {
