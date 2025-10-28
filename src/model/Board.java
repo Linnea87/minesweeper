@@ -31,6 +31,10 @@ public class Board {
     public int getCols() {
         return cols;
     }
+
+    public boolean isLost(){
+        return lost;
+    }
   
     // === Core logic ==========================================================
 
@@ -57,11 +61,6 @@ public class Board {
     }
 
     public void calculateAdjacentMines() {
-
-
-        // x -1 går upp, x 0 samma rad x +1 går ner
-        // y -1 vänster, y 0 samma rad, y +1 höger
-
         for (int i = 0; i < rows; i++){
             for (int j = 0; j < cols; j++) {
                 Cell cell = grid[i][j];
@@ -89,39 +88,37 @@ public class Board {
 
     }
 
-  
+    // === Validation ==========================================================
+
     public boolean isValidCell(int row, int col) {
         return row >= 0 && row < rows && col >= 0 && col < cols;
     }
-    
-    public void revealCell(Coordinate coord) {
-        // Coordinate class should provide:
-        // - int getRow()
-        // - int getCol()
+
+    public boolean isValidCell(Coordinate coord) {
+        return isValidCell(coord.getRow(), coord.getCol());
+    }
+
+    // === Gameplay actions ====================================================
+
+    public boolean revealCell(Coordinate coord) {
         int row = coord.getRow();
         int col = coord.getCol();
 
-        if (row < 0 || row >= rows || col < 0 || col >= cols) {
-            return;
+        if (!isValidCell(coord)) {
+            return false;
         }
 
-        // Cell class should provide:
-        // - boolean isRevealed()
-        // - boolean isFlagged()
-        // - void reveal()
-        // - boolean hasMine()
-        // - int getAdjacentMines()
         Cell cell = grid[row][col];
 
         if (cell.isRevealed() || cell.isFlagged()) {
-            return;
+            return false;
         }
 
         cell.revealCell();
 
         if (cell.hasMine()) {
             lost = true;
-            return;
+            return true;
         }
 
         if (cell.getAdjacentMines() == 0) {
@@ -129,16 +126,14 @@ public class Board {
                 for (int dc = -1; dc <= 1; dc++) {
                     if (dr == 0 && dc == 0) continue;
 
-                    int newRow = row + dr;
-                    int newCol = col + dc;
-
-                    // Coordinate should also have a constructor:
-                    // Coordinate(int row, int col)
-                    Coordinate neighbor = new Coordinate(newRow, newCol);
-                    revealCell(neighbor);
+                    Coordinate neighbor = new Coordinate(row + dr, col + dc);
+                    if (isValidCell(neighbor)) {
+                        revealCell(neighbor);
+                    }
                 }
             }
         }
+        return true;
     }
 
 
@@ -152,30 +147,24 @@ public class Board {
         return false;
     }
 
-    public void toggleFlag(Coordinate coordinate){
+    public boolean toggleFlag(Coordinate coordinate){
         int row = coordinate.getRow();
         int col = coordinate.getCol();
 
-        if (row < 0 || row >= rows || col < 0 || col >= cols) {
-            System.out.println("Invalid coordinate");
-            return;
+        if (!isValidCell(row, col)) {
+            return false;
         }
 
         Cell cell = getCell(coordinate);
 
         if (cell.isRevealed()){
-            System.out.println("You can't flag this cell");
-            return;
+            return false;
         }
 
-        if (cell.isFlagged()){
-            cell.setFlagged(false);
-            System.out.println("Flag deleted from (" + row + "," + col + ")");
-        } else {
-            cell.setFlagged(true);
-            System.out.println("Flag placed on (" + row + "," + col + ")");
+       cell.setFlagged(!cell.isFlagged());
+        return true;
         }
-    }
+
 
     public boolean isGameWon() {
         Cell[][] cells = getGrid();
@@ -190,7 +179,7 @@ public class Board {
         return true;
     }
 
-    // === Getter som UI behöver ==============================================
+    // === Getters for UI ==============================================
   
     public Cell[][] getGrid() {
         return grid;

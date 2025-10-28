@@ -37,12 +37,19 @@ public class Game {
                     ui.showExitMessage();
                     running = false;
                     break;
+
                 case REVEAL:
-                    board.revealCell(cmd.getCoordinate());
+                    boolean revealed = board.revealCell(cmd.getCoordinate());
+                    if(!revealed){
+                        ui.showInvalidInputMessage();
+                    }
                     break;
 
                 case FLAG:
-                    board.toggleFlag(cmd.getCoordinate());
+                    boolean ok = board.toggleFlag(cmd.getCoordinate());
+                    if(!ok){
+                        ui.showInvalidInputMessage();
+                    }
                     break;
 
                 case INVALID:
@@ -60,6 +67,7 @@ public class Game {
                 }
                 running = false;
             }
+            System.out.println();
         }
     }
 }
