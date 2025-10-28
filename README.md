@@ -35,7 +35,7 @@ The project follows object-oriented design principles and is structured accordin
 
 ## 👥 Group Information
 
-**Group name:** [Your team name]  
+**Group name:** CodeQueens — *mastering logic, one line at a time.*  
 **Project type:** Group assignment – Text-Based Java Game (Minesweeper)
 
 **Members:**
@@ -153,4 +153,4 @@ Follow the instructions in the terminal to play the game.
 - Occasional debugging, code review, and documentation support were assisted by AI tools.
 - [Lucidchart](https://lucid.app/) was used to design the UML class diagram.
 - [Trello](https://trello.com/) was used to organize the project workflow and class-based tasks.
-- Carbon was used to create the terminal mockup image included in this README.
+- [Carbon](https://carbon.now.sh/) was used to create the terminal mockup image included in this README.
