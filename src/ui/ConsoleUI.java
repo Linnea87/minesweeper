@@ -173,4 +173,11 @@ public class ConsoleUI {
     public void showExitMessage() {
         System.out.println("\n👋 Thanks for playing!");
     }
+
+    public boolean askPlayAgain() {
+        System.out.println("Play again? (y/n): ");
+        String answer = scanner.nextLine().trim().toLowerCase();
+        return answer.equals("y");
+    }
+
 }

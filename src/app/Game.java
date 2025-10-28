@@ -12,62 +12,81 @@ public class Game {
     private ConsoleUI ui;
 
     // === Constructor =========================================================
+    private void setupNewBoard() {
+       board = new Board(8, 8, 10);
+       board.initialize();
+       board.createBoard();
+       board.calculateAdjacentMines();
+    }
 
     public Game() {
-        this.board = new Board(8, 8, 10);
         this.ui = new ConsoleUI();
     }
 
     // === Core logic ==========================================================
     public void start() {
-        board.initialize();
-        board.createBoard();
-        board.calculateAdjacentMines();
-        ui.showWelcomeMessage();
 
+        boolean firstRound = true;
+        boolean keepPlaying = true;
 
-        boolean running = true;
-        while (running) {
-            ui.render(board);
-
-          Command cmd = ui.readUserCommand();
-
-            switch(cmd.getType()){
-                case QUIT:
-                    ui.showExitMessage();
-                    running = false;
-                    break;
-
-                case REVEAL:
-                    boolean revealed = board.revealCell(cmd.getCoordinate());
-                    if(!revealed){
-                        ui.showInvalidInputMessage();
-                    }
-                    break;
-
-                case FLAG:
-                    boolean ok = board.toggleFlag(cmd.getCoordinate());
-                    if(!ok){
-                        ui.showInvalidInputMessage();
-                    }
-                    break;
-
-                case INVALID:
-                default:
-                    ui.showInvalidInputMessage();
-                    break;
+        while (keepPlaying) {
+            setupNewBoard();
+            if (firstRound) {
+                ui.showWelcomeMessage();
+                firstRound = false;
             }
 
-            if (running && board.isGameOver()){
+            boolean running = true;
+            while (running) {
                 ui.render(board);
-                if (board.isGameWon()){
-                    ui.showWinMessage();
-                } else {
-                    ui.showGameOver();
+
+                Command cmd = ui.readUserCommand();
+
+                switch (cmd.getType()) {
+                    case QUIT:
+                        ui.showExitMessage();
+                        running = false;
+                        break;
+
+                    case REVEAL:
+                        boolean revealed = board.revealCell(cmd.getCoordinate());
+                        if (!revealed) {
+                            ui.showInvalidInputMessage();
+                        }
+                        break;
+
+                    case FLAG:
+                        boolean ok = board.toggleFlag(cmd.getCoordinate());
+                        if (!ok) {
+                            ui.showInvalidInputMessage();
+                        }
+                        break;
+
+                    case INVALID:
+                    default:
+                        ui.showInvalidInputMessage();
+                        break;
                 }
-                running = false;
+
+                if (running && board.isGameOver()) {
+                    ui.render(board);
+                    if (board.isGameWon()) {
+                        ui.showWinMessage();
+                    } else {
+                        ui.showGameOver();
+                    }
+                    running = false;
+                }
+                System.out.println();
             }
-            System.out.println();
+            if (keepPlaying) {
+                keepPlaying = ui.askPlayAgain();
+                if (!keepPlaying) {
+                    ui.showExitMessage();
+                }
+
+            }
+
         }
     }
 }
