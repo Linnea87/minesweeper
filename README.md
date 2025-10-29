@@ -103,11 +103,10 @@ The program is structured for clarity, maintainability, and modular design, foll
 
 ## 🧪 Future Features
 
-Features we didn’t have time to implement but plan to add in the future:
 - Difficulty levels (Easy, Medium, Hard)
-- Automatic reveal of surrounding empty cells (flood fill)
 - Timer and score tracking
-- Replay / Restart function
+- Separate messages for different types of invalid input
+- Press **Enter** to display the board (instead of showing it immediately with the welcome message and instructions)
 
 [Back to top](#table-of-contents)
 
@@ -154,3 +153,7 @@ Follow the instructions in the terminal to play the game.
 - [Lucidchart](https://lucid.app/) was used to design the UML class diagram.
 - [Trello](https://trello.com/) was used to organize the project workflow and class-based tasks.
 - [Carbon](https://carbon.now.sh/) was used to create the terminal mockup image included in this README.
+
+💻 Happy coding!
+
+*CodeQueens*
