@@ -12,25 +12,34 @@ public class Game {
     private ConsoleUI ui;
 
     // === Constructor =========================================================
-    private void setupNewBoard() {
-       board = new Board(8, 8, 10);
-       board.initialize();
-       board.createBoard();
-       board.calculateAdjacentMines();
-    }
 
     public Game() {
         this.ui = new ConsoleUI();
+        setupNewBoard();
+    }
+
+    // === Helpers / internal init ============================================
+
+    private void setupNewBoard() {
+        board = new Board(8, 8, 10);
+        board.initialize();
+        board.createBoard();
+        board.calculateAdjacentMines();
     }
 
     // === Core logic ==========================================================
+
     public void start() {
 
         boolean firstRound = true;
         boolean keepPlaying = true;
 
         while (keepPlaying) {
-            setupNewBoard();
+
+            if (!firstRound) {
+                setupNewBoard();
+            }
+
             if (firstRound) {
                 ui.showWelcomeMessage();
                 firstRound = false;
@@ -77,16 +86,14 @@ public class Game {
                     }
                     running = false;
                 }
+
                 System.out.println();
             }
-            if (keepPlaying) {
-                keepPlaying = ui.askPlayAgain();
-                if (!keepPlaying) {
-                    ui.showExitMessage();
-                }
 
+            keepPlaying = ui.askPlayAgain();
+            if (!keepPlaying) {
+                ui.showExitMessage();
             }
-
         }
     }
 }
