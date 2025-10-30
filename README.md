@@ -9,7 +9,10 @@ The project follows object-oriented design principles and is structured accordin
 ## Table of Contents
 - [Project Goals](#-project-goals)
 - [Group Information](#-group-information)
-- [Project Structure](#-project-structure)
+- [Design](#-design)
+  - [UML Overview and Project Planning](#-uml-overview)
+  - [Trello](#-trello)
+  - [Project Structure](#-project-structure)
 - [Existing Features](#-existing-features)
     - [Game](#-game)
     - [Board](#-board)
@@ -18,13 +21,13 @@ The project follows object-oriented design principles and is structured accordin
     - [Coordinate](#-coordinate)
     - [ConsoleUI](#-consoleui)
 - [Future Features](#-future-features)
-- [UML Overview and Project Planning](#-uml-overview-and-project-planning)
 - [How to Run](#-how-to-run)
 - [Credits](#-credits)
 
 [Back to top](#table-of-contents)
 
 ## 🎯 Project Goals
+
 - Develop a fully functional, text-based version of Minesweeper using Java.
 - Apply object-oriented programming principles such as encapsulation and composition.
 - Work collaboratively using a shared UML diagram as the foundation for class design.
@@ -46,7 +49,34 @@ The project follows object-oriented design principles and is structured accordin
 
 [Back to top](#table-of-contents)
 
-## 🧩 Project Structure
+## 🎨 Design
+
+### 🧭 UML Overview
+
+Our UML diagram illustrates the relationship between classes such as `Game`, `Board`, `Cell`, `Command`, `Coordinate`, and `ConsoleUI`.
+
+![UML Diagram](docs/minnesweep.png)
+
+### Trello
+
+At the beginning of the project, we planned to organize our work using user stories to describe different game features and tasks.  
+However, we were limited by the free version of Trello, which made it difficult to use checklists and detailed task tracking.
+
+Because of this, we decided to base our Trello board on the classes from our UML diagram instead.  
+Each class (`Game`, `Board`, `Cell`, `Command`, `Coordinate`, `ConsoleUI`) had its own Trello card.
+
+On each card, we divided the work between group members (A–D), where each person implemented specific methods or parts of the class.
+
+This approach allowed us to:
+- Follow our UML structure directly during development.
+- Divide the work fairly between all members.
+- Collaborate efficiently without overwriting each other’s code.
+
+🔗 [View our Trello board](https://trello.com/b/svIWGBWV/minroj)
+
+[Back to top](#table-of-contents)
+
+### 🧩 Project Structure
 
 The project is divided into packages to separate logic, data, and user interaction clearly:
 
@@ -56,6 +86,7 @@ model/     → Board and cell logic (Board, Cell)
 core/      → Core types and commands (Command, Coordinate)
 ui/        → Console interface (ConsoleUI)
 ```
+
 This structure follows an MVC-like architecture:
 
 - **Model** handles data and game rules.
@@ -107,31 +138,6 @@ The program is structured for clarity, maintainability, and modular design, foll
 - Timer and score tracking
 - Separate messages for different types of invalid input
 - Press **Enter** to display the board (instead of showing it immediately with the welcome message and instructions)
-
-[Back to top](#table-of-contents)
-
-## 🧭 UML Overview and Project Planning
-
-Our UML diagram illustrates the relationship between classes such as `Game`, `Board`, `Cell`, `Command`, `Coordinate`, and `ConsoleUI`.
-
-![UML Diagram](docs/minnesweep.png)
-
-### Trello & Workflow
-
-At the beginning of the project, we planned to organize our work using user stories to describe different game features and tasks.  
-However, we were limited by the free version of Trello, which made it difficult to use checklists and detailed task tracking.
-
-Because of this, we decided to base our Trello board on the classes from our UML diagram instead.  
-Each class (`Game`, `Board`, `Cell`, `Command`, `Coordinate`, `ConsoleUI`) had its own Trello card.
-
-On each card, we divided the work between group members (A–D), where each person implemented specific methods or parts of the class.
-
-This approach allowed us to:
-- Follow our UML structure directly during development.
-- Divide the work fairly between all members.
-- Collaborate efficiently without overwriting each other’s code.
-
-🔗 [View our Trello board](https://trello.com/b/svIWGBWV/minroj)
 
 [Back to top](#table-of-contents)
 
