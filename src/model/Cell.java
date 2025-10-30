@@ -1,7 +1,5 @@
 package model;
 
-import core.Coordinate;
-
 public class Cell {
   
   // === Fields ==============================================================
