@@ -91,14 +91,7 @@ public class ConsoleUI {
     }
 
     // === Input handling ======================================================
-
-    /**
-     * Reads player input from the console.
-     * Example commands:
-     * - r a1 → reveal cell A1
-     * - f b3 → flag cell B3
-     * - q → quit game
-     */
+    
     public Command readUserCommand() {
         System.out.print("\nEnter command (e.g. r a1, f b3, or q to quit): ");
         String line = scanner.nextLine().trim().toLowerCase();
