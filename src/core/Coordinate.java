@@ -1,8 +1,13 @@
 package core;
 
 public class Coordinate {
+
+    // === Fields ======================================================
+
     private int row;
     private int col;
+
+    // === Constructors ================================================
 
     public Coordinate(int row, int col) {
         this.row = row;
@@ -22,6 +27,8 @@ public class Coordinate {
         this.row = rowChar - 'a';
         this.col = Integer.parseInt(colPart) - 1;
     }
+
+    // === Getters =======================================================
 
     public int getRow() {
         return row;
