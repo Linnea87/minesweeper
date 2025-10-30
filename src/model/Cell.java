@@ -22,11 +22,10 @@ public class Cell {
 
     // === Core methods ========================================================
 
+    // === Getters =============================================================
+
     public boolean hasMine() {
         return hasMine;
-    }
-    public void setMine(boolean hasMine) {
-        this.hasMine = hasMine;
     }
 
     public boolean isRevealed() {
@@ -42,12 +41,19 @@ public class Cell {
     public void revealCell() {
         this.isRevealed = true;
     }
+
+    // === Setters =============================================================
+
     public void setFlagged(boolean flagged) {
         this.isFlagged = flagged;
     }
 
     public void setAdjacentMines(int adjacentMines) {
         this.adjacentMines = adjacentMines;
+    }
+
+    public void setMine(boolean hasMine) {
+        this.hasMine = hasMine;
     }
 
 }
