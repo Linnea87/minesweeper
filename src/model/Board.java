@@ -23,18 +23,6 @@ public class Board {
         this.grid = null;
         this.lost = false;
     }
-
-    public int getRows() {
-        return rows;
-    }
-
-    public int getCols() {
-        return cols;
-    }
-
-    public boolean isLost(){
-        return lost;
-    }
   
     // === Core logic ==========================================================
 
@@ -136,7 +124,6 @@ public class Board {
         return true;
     }
 
-
     public boolean isGameOver() {
         if (lost) {
             return true;
@@ -163,8 +150,7 @@ public class Board {
 
        cell.setFlagged(!cell.isFlagged());
         return true;
-        }
-
+    }
 
     public boolean isGameWon() {
         Cell[][] cells = getGrid();
@@ -188,6 +174,4 @@ public class Board {
     public Cell getCell(Coordinate coordinate) {
         return grid[coordinate.getRow()][coordinate.getCol()];
     }
-
-
 }
